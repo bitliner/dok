@@ -26,6 +26,14 @@ function server_add {
 	echo -e "Adding:\t"$server_name"\t"$server_ip
 	echo -e $server_name"\t"$server_ip >> .servers
 }
+function app_list {
+	local IP=$(ask_user_server_ip)
+#	ssh -T -q ubuntu@$IP <<- EOF
+#		ls ~/apps
+#	EOF
+	ssh  ubuntu@$IP ls -l apps|egrep -v '^total'|awk '{print $NF;}'
+	
+}
 function app_add {
 	echo $1 $2
 	APP_NAME=$1

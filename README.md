@@ -1,6 +1,6 @@
-# BitP
+# dok
 
-BitP is a simple Platform as a Service.
+dok is a simple Platform as a Service.
 
 It is based on Docker, bash, git, ssh and driven by simplicity of the architecture and ease of use.
 
