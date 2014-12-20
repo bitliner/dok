@@ -1,10 +1,17 @@
 # dok
 
-dok is a simple Platform as a Service.
+dok turns any server in a Platform as a Service. 
+It allows you to deploy your apps thourgh git-push, using Docker.
 
-It is based on Docker, bash, git, ssh and driven by simplicity of the architecture and ease of use.
+It is based on Docker, bash, git, ssh and driven by simplicity of the architecture and ease of use. 
 
 I did not want to add higher level tools or library, in order to make it flexible and easy to customize. 
+
+The only dependencies you need on your server are Docker, that's it!
+
+# TODO
+* add variable user
+* 
 
 # Drivers
 
