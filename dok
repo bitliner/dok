@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 
 # TODO: add command to list remote git
@@ -42,12 +43,18 @@ function app_rm {
                 rm -r ~/apps/$APP_NAME
 EOF
 }
-function app_openhook {
-	APP_NAME=$1
-	local IP=$(ask_user_server_ip)
-	ssh -T ubuntu@$IP << EOF
-		echo 'ola'
-EOF	
+function app_hook {
+        APP_NAME=$1
+        if [ -z "$APP_NAME" ]; then
+                echo 'Please specify an app name to remove from server...'
+                return
+        fi
+        local IP=$(ask_user_server_ip)
+#        ssh -T ubuntu@$IP << EOF
+ #               cat ~/repositories/$APP_NAME.git/hooks/post-receive | egrep bash
+#EOF
+#        ssh -T ubuntu@$IP "cat ~/repositories/$APP_NAME.git/hooks/post-receive" | egrep -A 20000 bash
+        ssh -Tt ubuntu@$IP "nano ~/repositories/$APP_NAME.git/hooks/post-receive" 
 }
 
 function app_add {
@@ -58,7 +65,7 @@ function app_add {
 	echo "Connecting to...$IP"
 	PROJECT_FOLDER_VAR='\$PROJECT_FOLDER'
 	HOME_VAR='$HOME'
-	ssh -T ubuntu@$IP << EOF
+	ssh -q -T ubuntu@$IP << EOF
 		echo "Creating repositories folder..."
 		mkdir -p ~/repositories/$APP_NAME.git
 		cd ~/repositories/$APP_NAME.git
