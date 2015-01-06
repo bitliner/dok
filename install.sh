@@ -4,6 +4,7 @@ cd ~
 
 mkdir -p ~/.dok
 cd $_
+rm -r ./*
 
 git clone https://github.com/bitliner/dok .
 
