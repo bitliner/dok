@@ -13,4 +13,4 @@ if [ -f /usr/bin/dok ]; then
 	sudo rm /usr/bin/dok
 fi
 
-sudo ln -vs  ./dok /usr/bin/dok
+sudo ln -vs  "$(pwd)"/dok /usr/bin/dok
