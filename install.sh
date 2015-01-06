@@ -2,7 +2,7 @@
 
 cd ~
 
-mkdir .dok
+mkdir -p ~/.dok
 cd $_
 
 git clone https://github.com/bitliner/dok .
