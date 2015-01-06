@@ -10,6 +10,7 @@ git clone https://github.com/bitliner/dok .
 
 
 if [ -f /usr/bin/dok ]; then
+	echo '-----> Removing /usr/bin/dok'
 	sudo rm /usr/bin/dok
 fi
 
