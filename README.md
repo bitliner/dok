@@ -1,4 +1,5 @@
-# dok
+dok
+===================================================
 
 dok turns any server in a Platform as a Service. 
 It allows you to deploy your apps using just git-push and Docker.
@@ -7,15 +8,19 @@ It is based on Docker, bash, git, ssh and driven by simplicity of the architectu
 
 The only dependencies you need on your linux server are git and Docker, that's it!
 
-## Workflow
+# Installation
+
+`wget -q0- https://raw.githubusercontent.com/bitliner/dok/master/install.sh | sudo bash`
+
+# Workflow
 
 Coming soon!
 
-## Usage
+# Usage
 
 Coming soon! 
 
-## TODO
+# TODO
 
 * finish Docker integration
 * finish README -> workflow
