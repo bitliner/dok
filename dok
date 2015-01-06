@@ -3,6 +3,8 @@
 
 # TODO: add command to list remote git
 
+ROOT_DIR=~/.dok/
+
 function ask_user_server_ip {
 	echo -e "Which server?\n" >&2
 	#read -p $1 in
@@ -10,9 +12,9 @@ function ask_user_server_ip {
 	while read line; do
 		echo -e $COUNTER"\t"$line >&2
 		COUNTER=$(($COUNTER + 1))
-	done < .servers
+	done < "$ROOT_DIR"/.servers
 	read -p "Enter filename: " SERVER_NUMBER
-	local SERVER_IP=`cat .servers|head -n $SERVER_NUMBER|tail -n 1|awk '{print $2;}'`
+	local SERVER_IP=`cat "$ROOT_DIR"/.servers|head -n $SERVER_NUMBER|tail -n 1|awk '{print $2;}'`
 	echo "$SERVER_IP"
 }
 
@@ -23,7 +25,7 @@ function server_add {
 	echo 'Server ip?'
 	read server_ip
 	echo -e "Adding:\t"$server_name"\t"$server_ip
-	echo -e $server_name"\t"$server_ip >> .servers
+	echo -e $server_name"\t"$server_ip >> "$ROOT_DIR"/.servers
 }
 
 function app_list {
