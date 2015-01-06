@@ -13,7 +13,7 @@ function ask_user_server_ip {
 		echo -e $COUNTER"\t"$line >&2
 		COUNTER=$(($COUNTER + 1))
 	done < "$ROOT_DIR"/.servers
-	read -p "Enter filename: " SERVER_NUMBER
+	read -p "Enter server (by number): " SERVER_NUMBER
 	local SERVER_IP=`cat "$ROOT_DIR"/.servers|head -n $SERVER_NUMBER|tail -n 1|awk '{print $2;}'`
 	echo "$SERVER_IP"
 }
