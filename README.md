@@ -10,7 +10,7 @@ The only dependencies you need on your linux server are git and Docker, that's i
 
 # Installation
 
-`wget -q0- https://raw.githubusercontent.com/bitliner/dok/master/install.sh | sudo bash`
+`wget -qO- https://raw.githubusercontent.com/bitliner/dok/master/install.sh | sudo bash`
 
 # Workflow
 
