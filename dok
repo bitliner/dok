@@ -82,7 +82,7 @@ function app_add {
 		cd ~/
 		echo "Creating app folder..."
 		mkdir -p ~/apps/$APP_NAME
-		echo 'Add git remote: ubuntu@$IP:'"$HOME/"$APP_NAME".git"
+		echo 'Add git remote: ubuntu@$IP:'"$HOME_VAR"/repositories/$APP_NAME".git"
 EOF
 }
 
