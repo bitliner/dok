@@ -20,6 +20,12 @@ Coming soon!
 
 Coming soon! 
 
+# Format of .servers
+
+<USERNAME for SSH credentials>\t<IP of server 1>	
+<USERNAME for SSH credentials>\t<IP of server 2>
+...	
+
 # TODO
 
 * finish Docker integration
