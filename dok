@@ -1,7 +1,19 @@
 
 #!/usr/bin/env bash
 
-# TODO: add command to list remote git
+#####################################
+#####################################
+
+USERNAME=""
+
+#####################################
+#####################################
+
+
+if [[ -z $USERNAME ]]; then
+	echo 'Please set up a username in '`which dok`
+	exit 1
+fi
 
 ROOT_DIR=~/.dok/
 
@@ -30,7 +42,7 @@ function server_add {
 
 function app_list {
 	local IP=$(ask_user_server_ip)
-	ssh  ubuntu@$IP ls -l apps|egrep -v '^total'|awk '{print $NF;}'	
+	ssh  $USERNAME@$IP ls -l apps|egrep -v '^total'|awk '{print $NF;}'	
 }
 
 function app_rm {
@@ -40,7 +52,7 @@ function app_rm {
                 return
         fi
         local IP=$(ask_user_server_ip)
-        ssh -T ubuntu@$IP << EOF
+        ssh -T $USERNAME@$IP << EOF
                 rm -r ~/repositories/$APP_NAME.git
                 rm -r ~/apps/$APP_NAME
 EOF
@@ -56,7 +68,7 @@ function app_hook {
  #               cat ~/repositories/$APP_NAME.git/hooks/post-receive | egrep bash
 #EOF
 #        ssh -T ubuntu@$IP "cat ~/repositories/$APP_NAME.git/hooks/post-receive" | egrep -A 20000 bash
-        ssh -Tt ubuntu@$IP "nano ~/repositories/$APP_NAME.git/hooks/post-receive" 
+        ssh -Tt $USERNAME@$IP "nano ~/repositories/$APP_NAME.git/hooks/post-receive" 
 }
 
 function app_add {
@@ -67,7 +79,7 @@ function app_add {
 	echo "Connecting to...$IP"
 	PROJECT_FOLDER_VAR='\$PROJECT_FOLDER'
 	HOME_VAR='$HOME'
-	ssh -q -T ubuntu@$IP << EOF
+	ssh -q -T $USERNAME@$IP << EOF
 		echo "Creating repositories folder..."
 		mkdir -p ~/repositories/$APP_NAME.git
 		cd ~/repositories/$APP_NAME.git
@@ -82,7 +94,7 @@ function app_add {
 		cd ~/
 		echo "Creating app folder..."
 		mkdir -p ~/apps/$APP_NAME
-		echo 'Add git remote: ubuntu@$IP:'"$HOME_VAR"/repositories/$APP_NAME".git"
+		echo 'Add git remote: $USERNAME@$IP:'"$HOME_VAR"/repositories/$APP_NAME".git"
 EOF
 }
 
